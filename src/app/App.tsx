@@ -1,12 +1,11 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
 
 export default function App() {
   return (
-    <div className="min-h-screen text-gray-900 font-mplus1">
-      <main className="max-w-5xl mx-auto">
+    <div className="font-mplus1 min-h-screen text-gray-900">
+      <main className="mx-auto max-w-5xl">
         <Outlet />
       </main>
     </div>
   );
 }
-
