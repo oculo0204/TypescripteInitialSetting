@@ -1,6 +1,6 @@
-# FitLink-FE
+# Portfolio
 
-공공데이터 활용 경진대회 - FitLink 프론트엔드 레포지토리
+포트폴리오 웹사이트 프로젝트
 
 ## 🚀 시작하기
 
@@ -15,15 +15,12 @@ npm run dev
 
 # 빌드
 npm run build
-
-# 린트 검사
-npm run lint
 ```
 
 ## 📁 프로젝트 구조
 
 ```
-FitLink-FE/
+Portfolio/
 ├── src/
 │   ├── api/          # API 호출 함수들
 │   ├── assets/       # 이미지, 아이콘 등 정적 파일
@@ -45,6 +42,7 @@ FitLink-FE/
 ### 1. UI 개발 플로우
 
 #### Step 1: 페이지 컴포넌트 작성 (`src/pages/`)
+
 실제 화면을 구성하는 페이지 컴포넌트를 먼저 작성합니다.
 
 ```typescript
@@ -89,6 +87,7 @@ export default function LoginPage() {
 ```
 
 #### Step 2: 재사용 컴포넌트 작성 (`src/components/`)
+
 페이지에서 사용할 재사용 가능한 컴포넌트를 작성합니다.
 
 ```typescript
@@ -116,6 +115,7 @@ export default function Button({ children, onClick, variant = 'primary' }: Butto
 ```
 
 #### Step 3: 라우팅 설정 (`src/app/routes.tsx`)
+
 새로운 페이지를 라우터에 등록합니다.
 
 ```typescript
@@ -137,6 +137,7 @@ export const router = createBrowserRouter([
 ```
 
 #### Step 4: 타입 정의 (`src/types/`)
+
 필요한 타입을 정의합니다.
 
 ```typescript
@@ -154,6 +155,7 @@ export interface LoginRequest {
 ```
 
 #### Step 5: 커스텀 Hook 작성 (`src/hooks/`) - 선택사항
+
 로직을 재사용하기 위해 커스텀 Hook을 작성합니다. (API 함수는 이미 `src/api/`에 작성되어 있다고 가정)
 
 ```typescript
@@ -174,6 +176,7 @@ export function useAuth() {
 ```
 
 #### Step 6: 상태 관리 설정 (`src/stores/` 또는 `src/contexts/`) - 선택사항
+
 전역 상태가 필요한 경우 Zustand Store 또는 Context를 생성합니다.
 
 ```typescript
@@ -195,6 +198,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 ### 2. API 개발 플로우
 
 #### Step 1: Axios 설정 (`src/api/`)
+
 공통 Axios 인스턴스를 설정합니다.
 
 ```typescript
@@ -227,11 +231,12 @@ axiosConfig.interceptors.response.use(
       window.location.href = '/login';
     }
     return Promise.reject(error);
-  }
+  },
 );
 ```
 
 #### Step 2: API 타입 정의 (`src/types/`)
+
 API 요청/응답에 사용할 타입을 정의합니다.
 
 ```typescript
@@ -251,6 +256,7 @@ export interface PaginatedResponse<T> {
 ```
 
 #### Step 3: API 함수 작성 (`src/api/`)
+
 기능별로 API 함수를 작성합니다.
 
 ```typescript
@@ -263,16 +269,14 @@ export const getUserApi = async (id: string): Promise<ApiResponse<User>> => {
   return response.data;
 };
 
-export const updateUserApi = async (
-  id: string,
-  data: Partial<User>
-): Promise<ApiResponse<User>> => {
+export const updateUserApi = async (id: string, data: Partial<User>): Promise<ApiResponse<User>> => {
   const response = await axiosConfig.put(`/users/${id}`, data);
   return response.data;
 };
 ```
 
 #### Step 4: React Query 사용 (선택사항)
+
 데이터 페칭을 위해 React Query를 사용할 수 있습니다.
 
 ```typescript
@@ -289,10 +293,9 @@ export function useUser(userId: string) {
 
 export function useUpdateUser() {
   const queryClient = useQueryClient();
-  
+
   return useMutation({
-    mutationFn: ({ id, data }: { id: string; data: Partial<User> }) =>
-      updateUserApi(id, data),
+    mutationFn: ({ id, data }: { id: string; data: Partial<User> }) => updateUserApi(id, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['user'] });
     },
@@ -305,11 +308,13 @@ export function useUpdateUser() {
 새로운 기능을 개발할 때 다음 순서를 따르세요:
 
 **UI 개발:**
+
 - [ ] **페이지**: `src/pages/`에 페이지 컴포넌트 작성
 - [ ] **컴포넌트**: `src/components/`에 재사용 컴포넌트 작성
 - [ ] **라우팅**: `src/app/routes.tsx`에 라우트 추가
 
 **선택**
+
 - [ ] **타입 정의**: `src/types/`에 필요한 타입 정의
 - [ ] **Hook**: 필요시 `src/hooks/`에 커스텀 Hook 작성
 - [ ] **상태 관리**: 필요시 `src/stores/` 또는 `src/contexts/`에 상태 관리 추가(선택)
@@ -323,20 +328,22 @@ export function useUpdateUser() {
 ## 🎨 스타일 가이드
 
 ### Tailwind CSS 사용
+
 이 프로젝트는 Tailwind CSS를 사용합니다. 커스텀 색상은 `tailwind.config.js`에 정의되어 있습니다.
 
 ```typescript
 // 사용 가능한 커스텀 색상
-className="bg-maingreen text-white"      // 메인 그린
-className="text-textblack"                // 텍스트 블랙
-className="bg-buttonGray"                  // 버튼 그레이
+className = 'bg-maingreen text-white'; // 메인 그린
+className = 'text-textblack'; // 텍스트 블랙
+className = 'bg-buttonGray'; // 버튼 그레이
 ```
 
 ### 폰트
+
 M PLUS 1p 폰트를 사용합니다.
 
 ```typescript
-className="font-mplus1"
+className = 'font-mplus1';
 ```
 
 ## 🔧 주요 기술 스택
