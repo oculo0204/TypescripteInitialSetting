@@ -17,6 +17,23 @@ npm run dev
 npm run build
 ```
 
+### Husky & lint-staged 
+- 커밋 시 자동으로 코드 품질 검사가 실행됩니다.
+- ESLint 오류가 있으면 커밋이 자동으로 차단됩니다. 아래 명령어로 직접 확인 및 수정할 수 있습니다.
+```
+# ESLint 검사
+npm run lint
+
+# Prettier 포맷 적용
+npx prettier --write .
+```
+
+### motion라이브러리 사용법
+예제는 motion.dev/examples를 참고하세요.
+
+
+
+
 ## 📁 프로젝트 구조
 
 ```
