@@ -32,7 +32,7 @@ npx prettier --write .
 예제는 motion.dev/examples를 참고하세요.
 
 ### Extensions; vscode 확장 프로그램
-ES7+ React/Redux/React-Native snippets , ESLint
+ES7+ React/Redux/React-Native snippets , ESLint,Tailwind CSS IntelliSense
 
 
 ## 📁 프로젝트 구조
