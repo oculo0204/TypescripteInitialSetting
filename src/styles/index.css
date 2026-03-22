@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* html, body, #root {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 1920px !important;
+  height: 1080px !important;
+  overflow: hidden !important;
+} */
 
 /* Letter 올라오는 애니메이션*/
 @keyframes slideUpFadeIn {
