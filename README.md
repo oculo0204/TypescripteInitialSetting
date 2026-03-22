@@ -31,7 +31,8 @@ npx prettier --write .
 ### motion라이브러리 사용법
 예제는 motion.dev/examples를 참고하세요.
 
-
+### Extensions; vscode 확장 프로그램
+ES7+ React/Redux/React-Native snippets , ESLint
 
 
 ## 📁 프로젝트 구조
